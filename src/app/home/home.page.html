@@ -1,12 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Aula 6
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <form (ngSubmit)="salvarUsuario()">
+        <ion-item>
+          <ion-label>Nome</ion-label>
+          <ion-input type="text" [(ngModel)]="usuarioCadastro.nome" name="Nome"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Idade</ion-label>
+          <ion-input [(ngModel)]="usuarioCadastro.idade" name="Idade" ></ion-input>
+        </ion-item>
+        <ion-button type="submit" color="primary">Salvar</ion-button>
+    </form>
+
+    <ion-list *ngFor="let usuarios of usuario">
+      <ion-item>{{usuarios.nome}} - {{usuarios.idade}}</ion-item>
+    </ion-list>
 </ion-content>

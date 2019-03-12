@@ -1,6 +1,8 @@
 {
   "name": "aula6-front",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "538775c0"
 }
