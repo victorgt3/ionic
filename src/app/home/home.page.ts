@@ -11,9 +11,9 @@ import { Response } from 'selenium-webdriver/http';
 })
 export class HomePage {
 
-  public usuario = [];
+  public usuarios = [];
 
-  public usuarioCadastro = {"nome":"", "idade":null};
+  public usuarioCadastro = {"_id":"","nome":"", "idade":null};
 
   constructor (public navCtrl: NavController, private usuarioService:UsuarioService){
    
@@ -22,10 +22,20 @@ export class HomePage {
   }
 
   public getUsuario(){
-    this.usuarioService.findAll().subscribe(response => this.usuario = response);
+    this.usuarioService.findAll().subscribe(response => this.usuarios = response);
+  }
+
+  public popularForm(usuario){
+    this.usuarioCadastro = usuario;
   }
 
   public salvarUsuario(){
-    this.usuarioService.salvar(this.usuarioCadastro).subscribe(response =>this.getUsuario());
+
+    if(this.usuarioCadastro._id == ""){
+      this.usuarioService.salvar(this.usuarioCadastro).subscribe(response =>this.getUsuario());
+    }else{
+      this.usuarioService.editar(this.usuarioCadastro).subscribe(response =>this.getUsuario());
+    }
+    
   }
 }

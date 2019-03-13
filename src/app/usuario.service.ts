@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-    public urlUsuario = "http://localhost:8000/usuario";
+    public urlUsuario = "http://localhost:8000/usuario/";
 
     constructor(private http: HttpClient) { }
 
@@ -19,5 +19,13 @@ export class UsuarioService {
 
   public salvar(usuario):Observable<any>{
     return this.http.post(this.urlUsuario, usuario);
+  }
+
+  public editar(usuario):Observable<any>{
+    return this.http.put(this.urlUsuario + "" + usuario._id, usuario);
+  }
+
+  public deletar(id):Observable<any>{
+    return this.http.delete(this.urlUsuario + "" + id);
   }
 }

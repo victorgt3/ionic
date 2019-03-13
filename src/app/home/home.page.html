@@ -19,7 +19,7 @@
         <ion-button type="submit" color="primary">Salvar</ion-button>
     </form>
 
-    <ion-list *ngFor="let usuarios of usuario">
-      <ion-item>{{usuarios.nome}} - {{usuarios.idade}}</ion-item>
+    <ion-list *ngFor="let usuario of usuarios">
+      <ion-item>{{usuario.nome}} - {{usuario.idade}} <ion-button id="{{usuario.id}}" (click)="popularForm(usuario)" color="warning">editar</ion-button></ion-item>
     </ion-list>
 </ion-content>
